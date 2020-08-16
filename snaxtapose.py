@@ -1,13 +1,37 @@
-pantry = []
+from food import Food
 
 
-def loadPantry():
+def openPantry():
+    cnt = 0
     with open("pantry.txt") as f:
         for line in f:
-            pantry.append(line.split(','))
-            pantry[-1][-1] = pantry[-1][-1].strip()
+            item = line.split(',')
+            item[-1] = item[-1].strip()
+            pantry.append(Food(item))
+            cnt += 1
 
     for entry in pantry:
         print(entry)
+    return cnt
 
-loadPantry()
+
+def writeFood(f, food):
+    f.write("{},{},{},{},{},{},{},{},{}\n".format(food.name, food.cost, food.amnt, food.unit,
+                                                  food.cals, food.fats, food.carb, food.prot,
+                                                  food.upc))
+
+
+def updatePantry():
+    f = open("pantry.txt", 'a')
+    for i in range(pantry_cnt, len(pantry)):
+        writeFood(f, pantry[i])
+    f.close()
+    print("Pantry updated.")
+
+
+pantry = []
+pantry_cnt = openPantry()
+
+if len(pantry) > pantry_cnt:
+    updatePantry()
+
