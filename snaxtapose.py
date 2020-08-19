@@ -29,6 +29,15 @@ def updatePantry():
     print("Pantry updated.")
 
 
+def shop(shopping_list):
+    cart = []
+    with open ("branded_food.csv") as store_f:
+        for line in store_f:
+
+
+    return cart
+
+
 pantry = []
 pantry_cnt = openPantry()
 
