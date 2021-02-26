@@ -31,9 +31,9 @@ def updatePantry():
 
 def shop(shopping_list):
     cart = []
-    with open ("branded_food.csv") as store_f:
+    with open("branded_food.csv") as store_f:
         for line in store_f:
-
+            x = 1  # filler
 
     return cart
 
